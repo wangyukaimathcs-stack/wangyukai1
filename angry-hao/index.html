@@ -22,7 +22,7 @@
     const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
     const board=document.getElementById('board'),status=document.getElementById('status'),overlay=document.getElementById('overlay');
     const levelLabel=document.getElementById('levelLabel'),resultTitle=document.getElementById('resultTitle'),resultText=document.getElementById('resultText'),advance=document.getElementById('advance');
-    const faceData=["assets/face-1.png", "assets/face-2.png", "assets/face-3.png", "assets/face-4.png"];const imgs=faceData.map(src=>{const i=new Image();i.src=src;return i});const hero=new Image();hero.src="portrait.jpg";
+    const photoVersion='20260926b';function loadPhoto(path){const img=new Image();let retried=false;img.onerror=()=>{if(!retried){retried=true;img.src=path+'?v='+photoVersion+'&retry='+Date.now()}};img.src=path+'?v='+photoVersion;return img}const imgs=[1,2,3,4].map(n=>loadPhoto(`assets/face-${n}.png`));const hero=loadPhoto('portrait.jpg');
     let W=390,H=620,ground=548,G=.28;const sling={x:83,y:426};
     const stages=[
       {ammo:12,targets:[{x:990,y:272,r:19,hp:1},{x:970,y:185,r:19,hp:2},{x:1010,y:92,r:19,hp:1},{x:720,y:112,r:19,hp:1,swing:true,anchorX:720,anchorY:22,length:90}],blocks:[{x:890,y:300,w:155,h:12},{x:905,y:277,w:16,h:23},{x:900,y:215,w:145,h:12},{x:900,y:227,w:16,h:48},{x:930,y:126,w:115,h:12},{x:930,y:138,w:16,h:74}]},
